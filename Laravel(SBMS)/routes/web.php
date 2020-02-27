@@ -119,6 +119,24 @@ Route::group(['middleware' => 'customerMiddleware'], function (){
        'as'  => 'new-customer'
    ]);
 
+   Route::get('/customer/manage-customer',[
+      'uses' => 'CustomerController@manageCustomer',
+       'as'  => 'manage-customer'
+   ]);
+   Route::get('/customer/edit-customer/{id}',[
+      'uses' => 'CustomerController@editCustomer',
+       'as'  => 'edit-customer'
+   ]);
+   Route::post('/customer/update-customer',[
+      'uses' => 'CustomerController@updateCustomer',
+       'as'  => 'update-customer'
+   ]);
+
+   Route::post('/customer/delete-customer-info',[
+      'uses' => 'CustomerController@deleteCustomerInfo',
+       'as'  => 'delete-customer-info'
+   ]);
+
 });
 
 
@@ -230,9 +248,61 @@ Route::group(['middleware' => 'salesMiddleware'], function (){
         'as'  => 'new-sale'
     ]);
 
+    Route::get('/sales/getProductUnitPriceBYId/{productId}',[
+        'uses' => 'SalesController@getProductUnitPrice',
+        'as'  => 'sales/getProductUnitPriceBYId'
+    ]);
+
+    Route::get('/sales/sales-manage',[
+        'uses' => 'SalesController@manageSales',
+        'as'  => 'sales-manage'
+    ]);
+    Route::get('/sales/Sales-info/{id}',[
+        'uses' => 'SalesController@salesInfo',
+        'as'  => 'Sales-info'
+    ]);
+
 });
 
+Route::group(['middleware' => 'stackMiddleware'], function (){
 
+    Route::get('stack/display-stock', [
+        'uses' => 'StockController@displayStockReport',
+        'as'   => 'display-stock'
+    ]);
+
+    Route::get('stack/categoryId/{categoryId}', [
+        'uses' => 'StockController@getProductByCategoryId',
+        'as'   => 'stack/categoryId/'
+    ]);
+
+    Route::get('stack/report/{productId}/{startDate}/{endDate}', [
+        'uses' => 'StockController@searchStockReprotByIdandDate',
+        'as'   => 'stack/report'
+    ]);
+
+});
+
+Route::group(['middleware' => 'reportMiddleware'], function (){
+
+   Route::get('report/purchase-report',[
+     'uses' => 'ReportController@purchaseReport',
+     'as'   => 'purchase-report'
+   ]);
+   Route::get('report/sales-report',[
+     'uses' => 'ReportController@salesReport',
+     'as'   => 'sales-report'
+   ]);
+   Route::get('report/filterByDate/{from_date}/{to_date}',[
+     'uses' => 'ReportController@purchaseReportFilterByDate',
+     'as'   => 'report/filterByDate'
+   ]);
+
+   Route::get('report/displaySaleReport/{fromDate}/{toDate}',[
+     'uses' => 'ReportController@salesReportFilterByDate',
+     'as'   => 'report/displaySaleReport'
+   ]);
+});
 
 
 

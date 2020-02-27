@@ -13,15 +13,19 @@
                             <div class="form-group">
                                 <label>Date </label>
                                 <input type="date" class="form-control" name="purchase_date" placeholder="Date">
+                                <span class="text-danger">{{ $errors->has('purchase_date') ? $errors->first() : ''}}</span>
                             </div>
                             <div class="form-group">
                                 <label>Invoice No </label>
                                 <input type="number" class="form-control" name="purchase_invoice" placeholder="In-voice Number">
+                                <span class="text-danger">{{ $errors->has('purchase_invoice') ? $errors->first() : ''}}</span>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlSelect3">Supplier</label>
                                 <select class="form-control form-control-sm" name="supplier_id" id="exampleFormControlSelect3">
+                                    <option value="-1">---select---</option>
+                                    <span class="text-danger">{{ $errors->has('supplier_id') ? $errors->first() : ''}}</span>
                                     @foreach($suppliers as $supplier)
                                         <option value="{{$supplier->id}}">{{$supplier->supplier_name}}</option>
                                     @endforeach

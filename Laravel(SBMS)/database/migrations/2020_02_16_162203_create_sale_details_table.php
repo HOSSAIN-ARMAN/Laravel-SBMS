@@ -20,6 +20,7 @@ class CreateSaleDetailsTable extends Migration
             $table->string('quantity')->nullable();
             $table->string('mrp')->nullable();
             $table->string('total_mrp')->nullable();
+            $table->string('unit_price')->nullable();
             $table->foreign('sale_id')->references('id')->on('sales');
             $table->timestamps();
         });

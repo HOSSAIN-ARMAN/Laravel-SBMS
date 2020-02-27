@@ -32,6 +32,12 @@ class PurchaseController extends Controller
     }
 
     public function addPurchaseInfo(Request $request){
+          $this->validate($request,[
+              'purchase_date' => 'required',
+              'purchase_invoice' => 'required',
+              'supplier_id' => 'required',
+          ]);
+
           $data = $request->all();
           $purchaseId = Purchase::create($data)->id;
           if(count($request->product_id) > 0){

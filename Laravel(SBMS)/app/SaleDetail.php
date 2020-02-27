@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 class SaleDetail extends Model
 {
-    protected $fillable=['sale_id', 'product_id', 'quantity', 'mrp', 'total_mrp'];
+    protected $fillable=['sale_id', 'product_id', 'quantity', 'mrp', 'total_mrp', 'unit_price'];
 
     public static function saleProducts($request){
         $sale = new Sale();
@@ -21,7 +21,8 @@ class SaleDetail extends Model
                     'product_id'  => $request->product_id[$item],
                     'quantity'    => $request->quantity[$item],
                     'mrp'         => $request->mrp[$item],
-                    'total_mrp'   => $request->total_mrp[$item]
+                    'total_mrp'   => $request->total_mrp[$item],
+                    'unit_price'  => $request->unit_price[$item]
                 );
                 SaleDetail::insert($saleDetails);
             }

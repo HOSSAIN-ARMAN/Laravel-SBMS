@@ -46,6 +46,28 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if ($this->isHttpException($exception)) {
+            switch ($exception->getStatusCode()) {
+
+                // not authorized
+                case '404':
+                    return \Response::view('admin.errors.404',array(),404);
+//                    return redirect('/404');
+                    break;
+
+                // not found
+                case '405':
+                    return \Response::view('admin.errors.405',array(),405);
+//                    return redirect('/405');
+                    break;
+
+                default:
+                    return $this->renderHttpException($exception);
+                    break;
+            }
+        } else {
+            return parent::render($request, $exception);
+        }
+//        return parent::render($request, $exception);
     }
 }

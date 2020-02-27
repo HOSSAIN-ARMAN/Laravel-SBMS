@@ -20,6 +20,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Date</label>
                                 <input type="date" name="date" class="col-md-9  form-control">
+                                <span class="text-danger">{{$errors->has('date') ? $errors->first() : ''}}</span>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Loyalty Points</label>
@@ -46,6 +47,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Available Quantity</label>
                                 <input type="text" class="col-md-9  form-control" id="avaliableQuantity">
+                                <input type="hidden" class="col-md-9 from-control" id="unit_price">
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Quantity</label>
@@ -178,6 +180,25 @@
            });
         });
     </script>
+{{--    ====================================== get unit-price==============================--}}
+    <script>
+        $(document).ready(function(){
+            $('#getProductById').change(function(){
+                var productId = $(this).val();
+                var jsondata = {productId:productId};
+                $.ajax({
+                    url        :'http://localhost/treePlanet/public/sales/getProductUnitPriceBYId/'+productId,
+                    method     :'GET',
+                    dataType   :'json',
+                    data      : jsondata,
+                    cache      :false,
+                    success:function(data){
+                         $('#unit_price').val(data);
+                    }
+                });
+            });
+        });
+    </script>
 {{--    =======================get-product-mrp========================--}}
     <script>
         $(document).ready(function () {
@@ -221,18 +242,20 @@
               $('#discount').val(Discount());
               $('#discountAmount').val(DiscountAmount());
               $('#payableAmount').val(PayableAmount());
+
            });
            function addRow(){
                var productId = $('#getProductById').val();
                var quantity = $('#quantity').val();
                var mrp = $('#mrp').val();
                var totalMrp = $('#totalMrp').val();
-
+               var unitPrice =  $('#unit_price').val();
                var tr = '<tr>'+
                                '<td><input type="hidden" name="product_id[]" value="'+ productId+'">'+ productId+ '</td>'+
                                '<td><input type="hidden" name="quantity[]" value="'+ quantity+'">'+ quantity+ '</td>'+
                                '<td><input type="hidden" name="mrp[]" value="'+ mrp+'">'+ mrp+ '</td>'+
-                               '<td><input type="hidden" name="total_mrp[]" value="'+ totalMrp+'">'+ totalMrp+ '</td>'
+                               '<td><input type="hidden" name="total_mrp[]" value="'+ totalMrp+'">'+ totalMrp+ '</td>'+
+                               '<td  style="display:none;" ><input type="hidden" name="unit_price[]" value="'+ unitPrice+'"> </td>'
                         +'</tr>';
 
                $('tbody').append(tr);

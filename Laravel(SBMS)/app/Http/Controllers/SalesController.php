@@ -6,6 +6,7 @@ use App\Category;
 use App\Customer;
 use App\Product;
 use App\PurchaseDetails;
+use App\Sale;
 use App\SaleDetail;
 use DB;
 use Illuminate\Http\Request;
@@ -47,8 +48,40 @@ class SalesController extends Controller
     }
 
     public function saleProducts(Request $request){
+        $this->validate($request,[
+           'customer_id' => 'required',
+           'date' => 'required',
+
+        ]);
         SaleDetail::saleProducts($request);
         return redirect('sales/add-sales')->with('message', 'Sales Product Successfully!!');
+    }
+
+    public function getProductUnitPrice($productId){
+        $purchaseDetails = PurchaseDetails::where('product_id', $productId)->orderBy('id', 'desc')->get();
+        foreach ($purchaseDetails as $detail){
+            return json_encode($detail->unit_price);
+        }
+
+    }
+
+    public function manageSales(){
+
+        return view('admin.Sales.manage-sale',[
+            'sales' =>DB::table('sales')
+                          ->join('customers', 'sales.customer_id', '=', 'customers.id')
+                          ->select('sales.*', 'customers.name')->get()
+        ]);
+    }
+
+    public function salesInfo($id){
+        $saleDetails = DB::table('sale_details')
+                            ->join('products', 'sale_details.product_id', '=', 'products.id')
+                            ->where('sale_details.sale_id', '=', $id)
+                            ->select('sale_details.*', 'products.product_name', 'products.product_code')->get();
+        return view('admin.Sales.sale-details', [
+            'saleDetails' => $saleDetails
+        ]);
     }
 
 
