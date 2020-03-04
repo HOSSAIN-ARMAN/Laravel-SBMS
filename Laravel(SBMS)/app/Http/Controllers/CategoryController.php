@@ -14,7 +14,8 @@ class CategoryController extends Controller
     public function newCategory(Request $request){
         $this->validate($request, [
            'category_code' => 'required|min:4|max:4',
-            'category_name' => 'required|alpha|regex:/(^([a-zA-Z_ ]+)(\d+)?$)/u|min:4|max:30',
+            'category_name' => 'required',
+//            'category_name' => 'required|alpha|regex:/(^([a-zA-Z_ ]+)(\d+)?$)/u|min:4|max:30',
             'publication_status' => 'required'
         ]);
         if (Category::newCategory($request) == 'this code already Exits'){

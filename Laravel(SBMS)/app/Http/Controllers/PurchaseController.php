@@ -21,7 +21,8 @@ class PurchaseController extends Controller
         ]);
     }
     public function getProductByCategoryId($categoryId){
-        $product  = Product::where('category_id', $categoryId)->get();
+        $product  = Product::where('category_id', '=',  $categoryId)->where('publication_status', '=', 1)->get();
+//        $product  = Product::where('category_id', $categoryId)->get();
         return json_encode($product);
     }
     public function getProductCode($productId){
@@ -36,6 +37,14 @@ class PurchaseController extends Controller
               'purchase_date' => 'required',
               'purchase_invoice' => 'required',
               'supplier_id' => 'required',
+              'product_id' => 'required',
+              'product_code' => 'required',
+              'manufracture_date' => 'required',
+              'expire_date' => 'required',
+              'quantity' => 'required',
+              'unit_price' => 'required',
+              'total_price' => 'required',
+              'mrp' => 'required',
           ]);
 
           $data = $request->all();

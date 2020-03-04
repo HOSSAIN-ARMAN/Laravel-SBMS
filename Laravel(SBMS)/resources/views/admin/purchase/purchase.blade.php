@@ -12,18 +12,18 @@
                             <h4 class="card-title text-dark">SUPPLIER</h4>
                             <div class="form-group">
                                 <label>Date </label>
-                                <input type="date" class="form-control" name="purchase_date" placeholder="Date">
+                                <input type="date" class="form-control" name="purchase_date" placeholder="Date" autocomplete="off">
                                 <span class="text-danger">{{ $errors->has('purchase_date') ? $errors->first() : ''}}</span>
                             </div>
                             <div class="form-group">
                                 <label>Invoice No </label>
-                                <input type="number" class="form-control" name="purchase_invoice" placeholder="In-voice Number">
+                                <input type="number" class="form-control" name="purchase_invoice" placeholder="In-voice Number" autocomplete="off">
                                 <span class="text-danger">{{ $errors->has('purchase_invoice') ? $errors->first() : ''}}</span>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlSelect3">Supplier</label>
-                                <select class="form-control form-control-sm" name="supplier_id" id="exampleFormControlSelect3">
+                                <select class="form-control form-control-sm" name="supplier_id" id="exampleFormControlSelect3" autocomplete="off">
                                     <option value="-1">---select---</option>
                                     <span class="text-danger">{{ $errors->has('supplier_id') ? $errors->first() : ''}}</span>
                                     @foreach($suppliers as $supplier)
@@ -43,7 +43,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Category</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control btn btn-outline-dark" id="categoryId">
+                                            <select class="form-control btn btn-outline-dark" id="categoryId" autocomplete="off">
                                                 <option value="-1">--Select--</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{$category->id}}">{{ $category->category_name }}</option>
@@ -56,7 +56,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Quantity</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" id="quantity">
+                                            <input class="form-control" type="text" id="quantity" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -66,11 +66,12 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Product</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control btn btn-outline-dark" id="getProductBycategoryId">
+                                            <select class="form-control btn btn-outline-dark" id="getProductBycategoryId" autocomplete="off">
                                                 {{--                                            @foreach($products as $product)--}}
                                                 {{--                                            <option>{{$product->product_name}}</option>--}}
                                                 {{--                                           @endforeach--}}
                                             </select>
+                                            <input type="hidden" id="productName" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +79,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Unit Price</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" id="unitPrice">
+                                            <input class="form-control" type="text" id="unitPrice" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +89,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Code</label>
                                         <div class="col-sm-9" >
-                                            <input type="text" class="form-control" id="productCode" value=""/>
+                                            <input type="text" class="form-control" id="productCode" value="" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +97,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Total Price</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="totalPrice"/>
+                                            <input type="text" class="form-control" id="totalPrice" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +108,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Available Quantity</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="availableQuatity"/>
+                                            <input type="text" class="form-control" id="availableQuatity" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +116,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Previous UnitPrice</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"  id="previousUnitPrices"/>
+                                            <input type="text" class="form-control"  id="previousUnitPrices" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +126,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Manufracture Date</label>
                                         <div class="col-sm-9">
-                                            <input type="date" class="form-control" id="manufractureDate"/>
+                                            <input type="date" class="form-control" id="manufractureDate" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +134,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Previous MRP</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="previousMrp"/>
+                                            <input type="text" class="form-control" id="previousMrp" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +144,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Expire Date</label>
                                         <div class="col-sm-9">
-                                            <input type="date" class="form-control" id="expireDate"/>
+                                            <input type="date" class="form-control" id="expireDate" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +152,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label"> MRP</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="MRP"/>
+                                            <input type="text" class="form-control" id="MRP" autocomplete="off"/>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +171,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label"> </label>
                                         <div class="col-sm-9">
-                                            <button type="button" class="form-control btn-outline-dark addPurchase">Add</button>
+                                            <button type="button" class="form-control btn-outline-dark addPurchase" >Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -183,11 +184,15 @@
                     <br>
 
                     <input type="submit" id="saveBtn" class="form-control btn-info col-sm-3" value="Submit-Purchase">
+
+                        <input type="hidden" class="text-danger" id="newId" value="{{ $errors->has('product_id') ? '': 'Product-Name'}}">
+
+                    <h3 class="text-uppercase text-danger" id="mgs"></h3>
                     <table class="table table-bordered" id="purchaseTable">
                         <thead class=thead-dark>
                         <tr>
                             {{--                    <th>SL</th>--}}
-                            <th>Product id</th>
+                            <th>Product Name</th>
                             <th>Product Code</th>
                             <th>Manufracture Date</th>
                             <th>Expire Date</th>
@@ -195,7 +200,7 @@
                             <th>Unit Price</th>
                             <th>Total Price</th>
                             <th>MRP</th>
-                            <th>Action</th>
+{{--                            <th>Action</th>--}}
                         </tr>
                         </thead>
                         <tbody>
@@ -210,6 +215,20 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+           $('#saveBtn').click(function () {
+               var newId = $('#newId').val();
+
+               var inputArray = new Array(newId);
+               if(inputArray[0] == "Product-Name"){
+                   //alert('Add Data to the table accurately');
+                   $('#mgs').text('Add Data to the table accurately');
+               }
+           });
+        });
+    </script>
     <script>
         $(document).ready(function () {
            $('#categoryId').change(function () {
@@ -229,6 +248,26 @@
                  }
               });
            });
+        });
+    </script>
+
+    {{--    ================================= get-product-name========================--}}
+    <script>
+        $(document).ready(function () {
+            $('#getProductBycategoryId').change(function(){
+                var productId = $(this).val();
+                var jsondata = {productId:productId};
+                $.ajax({
+                    url        :'http://localhost/treePlanet/public/sales/product-name/'+productId,
+                    method     :'GET',
+                    dataType   :'json',
+                    data      : jsondata,
+                    cache      :false,
+                    success:function(data){
+                         $('#productName').val(data);
+                    }
+                });
+            });
         });
     </script>
 
@@ -369,11 +408,47 @@
     <script>
         $(document).ready(function () {
              $('.addPurchase').click(function () {
-                addRow();
+                 // jquery -----------basic---------- from-------------- validation
+                 var productName = $('#productName').val();
+                 var productCode = $('#productCode').val();
+                 var manufractureDate = $('#manufractureDate').val();
+                 var expireDate = $('#expireDate').val();
+                 var quantity = $('#quantity').val();
+                 var unitPrice = $('#unitPrice').val();
+                 var totalPrice = $('#totalPrice').val();
+                 var mrp = $('#MRP').val();
+
+                 var inputVal = new Array(productName, productCode, manufractureDate, expireDate, quantity, unitPrice, totalPrice, mrp);
+                 var inputMessage = new Array("productName","productCode","manufractureDate", "expireDate", "quantity", "unitPrice", "totalPrice", "mrp");
+
+                 if (inputVal[0] == ""){
+                     alert(inputMessage[0] + '  field can not be empty');
+                 }else if(inputVal[1] == ""){
+                     alert(inputMessage[1] + '  field can not be empty');
+                 }else if(inputVal[2] == ""){
+                     alert(inputMessage[2] + '  field can not be empty');
+                 }else if(inputVal[3] == ""){
+                     alert(inputMessage[3] + '  field can not be empty');
+                 }else if(inputVal[4] == ""){
+                     alert(inputMessage[4] + '  field can not be empty');
+                 }else if(inputVal[5] == ""){
+                     alert(inputMessage[5] + '  field can not be empty');
+                 }else if(inputVal[6] == ""){
+                     alert(inputMessage[6] + '  field can not be empty');
+                 }else if(inputVal[7] == ""){
+                     alert(inputMessage[7] + '  field can not be empty');
+                 }else if(inputVal[8] == ""){
+                     alert(inputMessage[8] + '  field can not be empty');
+                 }
+                 else {
+                     addRow();
+                 }
+                //addRow();
              });
 
              function addRow() {
                  var productId = $('#getProductBycategoryId').val();
+                 var productName = $('#productName').val();
                  var productCode = $('#productCode').val();
                  var manufractureDate = $('#manufractureDate').val();
                  var expireDate = $('#expireDate').val();
@@ -383,7 +458,7 @@
                  var mrp = $('#MRP').val();
 
                  var tr = '<tr>' +
-                     '<td><input  type="hidden" name="product_id[]" value="'+ productId +'">' +productId + '</td>'+
+                     '<td class="name"><input  type="hidden" name="product_id[]" value="'+ productId +'">' +productName + '</td>'+
                      '<td><input  type="hidden" name="product_code[]" value="'+ productCode+'">'+productCode + '</td>'+
                      '<td><input  type="hidden" name="manufracture_date[]" value="'+ manufractureDate+'">'+ manufractureDate+'</td>'+
                      '<td><input  type="hidden" name="expire_date[]" value="'+ expireDate+'">'+expireDate +'</td>'+
@@ -391,10 +466,42 @@
                      '<td><input  type="hidden" name="unit_price[]" value="'+ unitPrice+'">'+unitPrice + '</td>'+
                      '<td><input type="hidden" name="total_price[]" value="'+ totalPrice+'">'+totalPrice + '</td>'+
                      '<td><input type="hidden" name="mrp[]" value="'+ mrp+'">'+mrp + '</td>'+
-                     '<td><a href="#">Delete</a></td>'+
+                     '<td style="visibility: hidden"><a href="#">Delete</a></td>'+
                      '</tr>';
 
-                 $('tbody').append(tr);
+                 // =========
+
+                 // ============================== if -exits -same -name -product ===============
+
+                 $('.table').each(function() {
+                     var nm = [];
+                     var i = 0;
+                     var check = 'exits';
+                     var exits = '';
+                     $(this).find('tr').each(function () {
+                         $(this).find('.name').each(function () {
+                             var name = $(this).text();
+                             nm[i++] = name;
+                         });
+                         for (let j = 0; j < nm.length; j++) {
+                             if (nm[j] == productName) {
+                                 exits = 'exits';
+                             }
+                         }
+
+                     });
+                     if (check == exits) {
+                         alert('This product already in table!!!');
+                         return;
+                     } else {
+                         $('tbody').append(tr);
+                         return;
+                     }
+
+                 });
+
+                 //$('tbody').append(tr);
+
              }
         });
     </script>

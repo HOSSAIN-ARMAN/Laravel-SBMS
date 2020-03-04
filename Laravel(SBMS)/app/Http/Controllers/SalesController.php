@@ -51,7 +51,8 @@ class SalesController extends Controller
         $this->validate($request,[
            'customer_id' => 'required',
            'date' => 'required',
-
+            'quantity'=>'required',
+            'product_id' => 'required'
         ]);
         SaleDetail::saleProducts($request);
         return redirect('sales/add-sales')->with('message', 'Sales Product Successfully!!');
@@ -82,6 +83,17 @@ class SalesController extends Controller
         return view('admin.Sales.sale-details', [
             'saleDetails' => $saleDetails
         ]);
+    }
+
+    public function validationData($productId){
+        $getProductQuantity = DB::table('purchase_details')->where('product_id', '=', $productId)->get()->sum('quantity');
+        return json_encode($getProductQuantity);
+    }
+
+    public function getProductName($productId){
+        $products = Product::where('id', $productId)->first();
+        return json_encode($products->product_name);
+
     }
 
 

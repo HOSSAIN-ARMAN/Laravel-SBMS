@@ -17,7 +17,8 @@ class ProductController extends Controller
     public function newProduct(Request $request){
         $this->validate($request,[
            'product_code' => 'required|min:4|max:4',
-            'product_name' => 'required|alpha|regex:/(^([a-zA-Z]+)(\d+)?$)/u|min:4|max:30',
+            'product_name' => 'required',
+//            'product_name' => 'required|alpha|regex:/(^([a-zA-Z]+)(\d+)?$)/u|min:4|max:30',
             'reorder_lavel' => 'required',
             'product_discription' => 'required',
             'product_img' => [

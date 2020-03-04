@@ -20,27 +20,25 @@ class StockController extends Controller
         return json_encode($products);
     }
     public function searchStockReprotByIdandDate($productId, $startDate, $endDate){
-           $purchaseDetails = DB::table('purchase_details')
-                                        ->where('product_id', '=', $productId)
-                                        ->whereBetween('manufracture_date', [$startDate, $endDate])
-                                        ->join('products', 'purchase_details.product_id', '=', 'products.id')
-                                        ->join('categories', 'products.category_id', '=', 'categories.id')
-                                        ->select('purchase_details.*','categories.category_name','products.product_name', 'products.reorder_lavel')
-                                        ->get();
-
-            return json_encode($purchaseDetails);
-
-        //                                        ->join('categories', 'products.category_id', '=', 'categories.id')
+//           $purchaseDetails = DB::table('purchase_details')
+//                                        ->where('product_id', '=', $productId)
+//                                        ->whereBetween('manufracture_date', [$startDate, $endDate])
+//                                        ->join('products', 'purchase_details.product_id', '=', 'products.id')
+//                                        ->join('categories', 'products.category_id', '=', 'categories.id')
+//                                        ->select('purchase_details.*','categories.category_name','products.product_name', 'products.reorder_lavel')
+//                                        ->get();
 
 
 
-//
-//           $saleDetails   = DB::table('sales')
-//                                      ->whereBetween('date', [$request->start_date, $request->end_date])
-//                                      ->join('sale_details', 'sales.id', '=', 'sale_details.sale_id')
-//                                      ->where('sale_details.product_id', '=', $request->product_id)
-//                                      ->select('sale_details.*')->get();
-
+        $purchaseDetails = DB::table('purchases')
+                                ->where('product_id', '=', $productId)
+                                ->whereBetween('purchase_date', [$startDate, $endDate])
+                                ->join('purchase_details', 'purchases.id', '=', 'purchase_details.purchase_id')
+                                ->join('products', 'purchase_details.product_id', '=', 'products.id')
+                                ->join('categories', 'products.category_id', '=', 'categories.id')
+                                ->select('purchase_details.*','categories.category_name', 'products.product_name', 'products.reorder_lavel')
+                                ->get();
+        return json_encode($purchaseDetails);
 
 
     }

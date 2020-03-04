@@ -1,6 +1,16 @@
 @extends('admin.master')
-@section('search')
-    @endsection
+{{--@section('search')--}}
+{{--    <li class="nav-item nav-search d-none d-lg-block w-100">--}}
+{{--        <div class="input-group">--}}
+{{--            <div class="input-group-prepend">--}}
+{{--                <span class="input-group-text"  id="search">--}}
+{{--                  <i class="mdi mdi-magnify"></i>--}}
+{{--                </span>--}}
+{{--            </div>--}}
+{{--            <input type="text" id="myInput" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">--}}
+{{--        </div>--}}
+{{--    </li>--}}
+{{--@endsection--}}
 @section('body')
     <div class="container">
         <div class="card border-success mb-12" style="max-width: 120rem;">
@@ -49,6 +59,10 @@
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                    <th colspan="3" class="text-center">Opening-Balance </th>
+                    <th colspan="3" class="total-profit text-center"></th>
+                    </tfoot>
                 </table>
 
             </div>
@@ -75,12 +89,25 @@
                                     '<td>'+ value.product_code+'</td>'+
                                     '<td>'+ value.product_name+'</td>'+
                                     '<td>'+ value.quantity+'</td>'+
-                                    '<td>'+ value.unit_price+' (Tk)'+'</td>'+
+                                    '<td class="unitPrice">'+ value.unit_price+'</td>'+
                                     '<td>'+ value.mrp+' (Tk)'+'</td>'+
                                     '<td>'+ (value.mrp - value.unit_price)+' (Tk)'+'</td>'
-                                   +'</tr>'
+                                   +'</tr>';
                           $('tbody').append(tr);
-                      })
+                      });
+
+                      $('.table').each(function() {
+                          var sum = 0;
+                          $(this).find('tr').each(function() {
+                              $(this).find('.unitPrice').each(function() {
+                                  var unitPrice = $(this).text();
+                                  if (!isNaN(unitPrice) && unitPrice.length !== 0) {
+                                      sum += parseInt(unitPrice);
+                                  }
+                              });
+                          });
+                          $('.total-profit').text(" = "+ sum + " TK");
+                      });
                   }
 
                });

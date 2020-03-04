@@ -262,6 +262,17 @@ Route::group(['middleware' => 'salesMiddleware'], function (){
         'as'  => 'Sales-info'
     ]);
 
+    Route::get('/sales/product-name/{productId}',[
+        'uses' => 'SalesController@getProductName',
+        'as'  => 'sales/product-name'
+    ]);
+
+//    =====================from -- validation===============
+    Route::get('sale/validation-data/{productId}',[
+       'uses'  =>  'SalesController@validationData',
+        'as'   =>  'sale/validation-data'
+    ]);
+
 });
 
 Route::group(['middleware' => 'stackMiddleware'], function (){
@@ -301,6 +312,10 @@ Route::group(['middleware' => 'reportMiddleware'], function (){
    Route::get('report/displaySaleReport/{fromDate}/{toDate}',[
      'uses' => 'ReportController@salesReportFilterByDate',
      'as'   => 'report/displaySaleReport'
+   ]);
+   Route::get('report/sales-report-pdf',[
+      'uses' => 'ReportController@salesReportPdf',
+      'as'   => 'sales-report-pdf'
    ]);
 });
 

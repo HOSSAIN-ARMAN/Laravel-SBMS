@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Majestic Admin</title>
+    <title>SBMS Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('/')}}admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{asset('/')}}admin/assets/vendors/base/vendor.bundle.base.css">
@@ -40,8 +40,7 @@
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020  .</span>
                 </div>
             </footer>
             <!-- partial -->
@@ -71,7 +70,16 @@
 <script src="{{asset('/')}}admin/assets/js/jquery.dataTables.js"></script>
 <script src="{{asset('/')}}admin/assets/js/dataTables.bootstrap4.js"></script>
 
-
+<script>
+    $(document).ready(function () {
+        $('#myInput').on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $('#table tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
 <!-- End custom js for this page-->
 </body>
 
