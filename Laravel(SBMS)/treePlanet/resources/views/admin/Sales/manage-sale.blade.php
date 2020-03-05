@@ -26,7 +26,7 @@
                 </p>
                 <div class="table-responsive pt-3">
                     <table class="table table-bordered" id="table">
-                        <thead>
+                        <thead  class="thead-dark">
                         <tr>
                             <th>SL</th>
                             <th>Customer Name</th>
@@ -42,9 +42,9 @@
                                 <td>{{$sale->name}}</td>
                                 <td>{{$sale->date}}</td>
                                 <td><a href="{{ route('Sales-info', ['id'=>$sale->id]) }}">View-Details</a></td>
-                                <td>
+{{--                                <td>--}}
 {{--                                    <a href="{{ route('view-purchase-details', ['id' => $sale->id]) }}">views</a>--}}
-                                </td>
+{{--                                </td>--}}
                             </tr>
                         @endforeach
                         </tbody>

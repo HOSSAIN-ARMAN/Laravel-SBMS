@@ -8,8 +8,9 @@
                 @csrf
                 <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
-                        <div class="card-body  btn btn-outline-dark">
+                        <div class="card-body  btn btn-outline-linkedin">
                             <h4 class="card-title text-dark">SUPPLIER</h4>
+                            <hr>
                             <div class="form-group">
                                 <label>Date </label>
                                 <input type="date" class="form-control" name="purchase_date" placeholder="Date" autocomplete="off">
@@ -89,7 +90,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Code</label>
                                         <div class="col-sm-9" >
-                                            <input type="text" class="form-control" id="productCode" value="" autocomplete="off"/>
+                                            <input type="text" class="form-control" id="productCode" value="" autocomplete="off" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +98,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Total Price</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="totalPrice" autocomplete="off"/>
+                                            <input type="text" class="form-control" id="totalPrice" autocomplete="off" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +109,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Available Quantity</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="availableQuatity" autocomplete="off"/>
+                                            <input type="text" class="form-control" id="availableQuatity" autocomplete="off" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +117,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Previous UnitPrice</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"  id="previousUnitPrices" autocomplete="off"/>
+                                            <input type="text" class="form-control"  id="previousUnitPrices" autocomplete="off" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +135,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Previous MRP</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="previousMrp" autocomplete="off"/>
+                                            <input type="text" class="form-control" id="previousMrp" autocomplete="off" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +153,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label"> MRP</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="MRP" autocomplete="off"/>
+                                            <input type="text" class="form-control" id="MRP" autocomplete="off" readonly/>
                                         </div>
                                     </div>
                                 </div>
@@ -224,7 +225,7 @@
                var inputArray = new Array(newId);
                if(inputArray[0] == "Product-Name"){
                    //alert('Add Data to the table accurately');
-                   $('#mgs').text('Add Data to the table accurately');
+                   $('#mgs').text('');
                }
            });
         });

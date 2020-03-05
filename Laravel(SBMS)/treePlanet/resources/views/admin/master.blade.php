@@ -70,6 +70,8 @@
 <script src="{{asset('/')}}admin/assets/js/jquery.dataTables.js"></script>
 <script src="{{asset('/')}}admin/assets/js/dataTables.bootstrap4.js"></script>
 
+
+{{--=================== thsi search part for all modules=======================--}}
 <script>
     $(document).ready(function () {
         $('#myInput').on("keyup", function () {

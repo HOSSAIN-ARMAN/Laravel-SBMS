@@ -26,7 +26,7 @@
                 </p>
                 <div class="table-responsive pt-3">
                     <table class="table table-bordered" id="table">
-                        <thead>
+                        <thead class="thead-dark">
                         <tr>
                             <th>SL</th>
                             <th>Product Name</th>
